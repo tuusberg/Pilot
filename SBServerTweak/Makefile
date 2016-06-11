@@ -1,7 +1,7 @@
 DEBUG=1
 export DEBUG=1
 
-TARGET = iphone:latest:8.0
+TARGET = iphone:8.1
 #export ARCHS="armv7"
 
 CLANG = xcrun -sdk iphoneos clang
@@ -9,7 +9,7 @@ TARGET_CC=$(CLANG)
 TARGET_CXX=$(CLANG)
 TARGET_LD=$(CLANG)
 
-include theos/makefiles/common.mk
+include ${THEOS}/makefiles/common.mk
 
 TWEAK_NAME = SBServerTweak
 
@@ -33,7 +33,7 @@ ${TWEAK_NAME}_LDFLAGS =  -lstdc++ -read_only_relocs suppress
 ${TWEAK_NAME}_FRAMEWORKS = CFNetwork Security CoreGraphics UIKit
 ${TWEAK_NAME}_PRIVATE_FRAMEWORKS = StoreServices SpringBoardUI
 
-include $(THEOS_MAKE_PATH)/tweak.mk
+include ${THEOS}/makefiles/tweak.mk
 
 after-install::
 	install.exec "killall -9 SpringBoard"
